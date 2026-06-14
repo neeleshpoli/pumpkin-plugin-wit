@@ -39,6 +39,8 @@ world plugin {
     import forms;
     /// Provides Java Edition dialogs.
     import java-dialogs;
+    /// Provides particles
+    import particles;
 
     // --- Plugin-provided exports ---
 

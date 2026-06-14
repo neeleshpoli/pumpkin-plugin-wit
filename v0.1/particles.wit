@@ -1,123 +1,293 @@
 package pumpkin:plugin@0.1.0;
 
 interface particles {
-  enum particle {
-    angry-villager,
-    block,
-    block-marker,
-    bubble,
-    cloud,
-    copper-fire-flame,
-    crit,
-    damage-indicator,
-    dragon-breath,
-    dripping-lava,
-    falling-lava,
-    landing-lava,
-    dripping-water,
-    falling-water,
-    dust,
-    dust-color-transition,
-    effect,
-    elder-guardian,
-    enchanted-hit,
-    enchant,
-    end-rod,
-    entity-effect,
-    explosion-emitter,
-    explosion,
-    gust,
-    small-gust,
-    gust-emitter-large,
-    gust-emitter-small,
-    sonic-boom,
-    falling-dust,
-    firework,
-    fishing,
-    flame,
-    infested,
-    cherry-leaves,
-    pale-oak-leaves,
-    tinted-leaves,
-    sculk-soul,
-    sculk-charge,
-    sculk-charge-pop,
-    soul-fire-flame,
-    soul,
-    flash,
-    happy-villager,
-    composter,
-    heart,
-    instant-effect,
-    item,
-    vibration,
-    trail,
-    pause-mob-growth,
-    reset-mob-growth,
-    item-slime,
-    item-cobweb,
-    item-snowball,
-    large-smoke,
-    lava,
-    mycelium,
-    note,
-    poof,
-    portal,
-    rain,
-    smoke,
-    white-smoke,
-    sneeze,
-    spit,
-    squid-ink,
-    sweep-attack,
-    totem-of-undying,
-    underwater,
-    splash,
-    witch,
-    bubble-pop,
-    current-down,
-    bubble-column-up,
-    nautilus,
-    dolphin,
-    campfire-cosy-smoke,
-    campfire-signal-smoke,
-    dripping-honey,
-    falling-honey,
-    landing-honey,
-    falling-nectar,
-    falling-spore-blossom,
-    ash,
-    crimson-spore,
-    warped-spore,
-    spore-blossom-air,
-    dripping-obsidian-tear,
-    falling-obsidian-tear,
-    landing-obsidian-tear,
-    reverse-portal,
-    white-ash,
-    small-flame,
-    snowflake,
-    dripping-dripstone-lava,
-    falling-dripstone-lava,
-    dripping-dripstone-water,
-    falling-dripstone-water,
-    glow-squid-ink,
-    glow,
-    wax-on,
-    wax-off,
-    electric-spark,
-    scrape,
-    shriek,
-    egg-crack,
-    dust-plume,
-    trial-spawner-detection,
-    trial-spawner-detection-ominous,
-    vault-connection,
-    dust-pillar,
-    ominous-spawning,
-    raid-omen,
-    trial-omen,
-    block-crumble,
-    firefly,
+  use item-stack.{ item-stack };
+  use common.{ position };
+  use %world.{ %world };
+  type offset = tuple<f32, f32, f32>;
+  /// Spawns `angry_villager` particles at the specified position.
+  spawn-angry-villager-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `block` particles at the specified position.
+  spawn-block-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: block);
+  resource block {
+    constructor(state: s32);
   }
+  /// Spawns `block_marker` particles at the specified position.
+  spawn-block-marker-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: block-marker);
+  resource block-marker {
+    constructor(state: s32);
+  }
+  /// Spawns `bubble` particles at the specified position.
+  spawn-bubble-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `cloud` particles at the specified position.
+  spawn-cloud-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `copper_fire_flame` particles at the specified position.
+  spawn-copper-fire-flame-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `crit` particles at the specified position.
+  spawn-crit-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `damage_indicator` particles at the specified position.
+  spawn-damage-indicator-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dragon_breath` particles at the specified position.
+  spawn-dragon-breath-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: dragon-breath);
+  resource dragon-breath {
+    constructor(power: f32);
+  }
+  /// Spawns `dripping_lava` particles at the specified position.
+  spawn-dripping-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_lava` particles at the specified position.
+  spawn-falling-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `landing_lava` particles at the specified position.
+  spawn-landing-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dripping_water` particles at the specified position.
+  spawn-dripping-water-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_water` particles at the specified position.
+  spawn-falling-water-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dust` particles at the specified position.
+  spawn-dust-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: dust);
+  resource dust {
+    constructor(color: s32, scale: f32);
+  }
+  /// Spawns `dust_color_transition` particles at the specified position.
+  spawn-dust-color-transition-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: dust-color-transition);
+  resource dust-color-transition {
+    constructor(from-color: s32, to-color: s32, scale: f32);
+  }
+  /// Spawns `effect` particles at the specified position.
+  spawn-effect-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: effect);
+  resource effect {
+    constructor(color: s32, power: f32);
+  }
+  /// Spawns `elder_guardian` particles at the specified position.
+  spawn-elder-guardian-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `enchanted_hit` particles at the specified position.
+  spawn-enchanted-hit-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `enchant` particles at the specified position.
+  spawn-enchant-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `end_rod` particles at the specified position.
+  spawn-end-rod-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `entity_effect` particles at the specified position.
+  spawn-entity-effect-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: entity-effect);
+  resource entity-effect {
+    constructor(color: s32);
+  }
+  /// Spawns `explosion_emitter` particles at the specified position.
+  spawn-explosion-emitter-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `explosion` particles at the specified position.
+  spawn-explosion-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `gust` particles at the specified position.
+  spawn-gust-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `small_gust` particles at the specified position.
+  spawn-small-gust-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `gust_emitter_large` particles at the specified position.
+  spawn-gust-emitter-large-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `gust_emitter_small` particles at the specified position.
+  spawn-gust-emitter-small-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `sonic_boom` particles at the specified position.
+  spawn-sonic-boom-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_dust` particles at the specified position.
+  spawn-falling-dust-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: falling-dust);
+  resource falling-dust {
+    constructor(state: s32);
+  }
+  /// Spawns `firework` particles at the specified position.
+  spawn-firework-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `fishing` particles at the specified position.
+  spawn-fishing-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `flame` particles at the specified position.
+  spawn-flame-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `infested` particles at the specified position.
+  spawn-infested-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `cherry_leaves` particles at the specified position.
+  spawn-cherry-leaves-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `pale_oak_leaves` particles at the specified position.
+  spawn-pale-oak-leaves-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `tinted_leaves` particles at the specified position.
+  spawn-tinted-leaves-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: tinted-leaves);
+  resource tinted-leaves {
+    constructor(color: s32);
+  }
+  /// Spawns `sculk_soul` particles at the specified position.
+  spawn-sculk-soul-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `sculk_charge` particles at the specified position.
+  spawn-sculk-charge-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: sculk-charge);
+  resource sculk-charge {
+    constructor(roll: f32);
+  }
+  /// Spawns `sculk_charge_pop` particles at the specified position.
+  spawn-sculk-charge-pop-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `soul_fire_flame` particles at the specified position.
+  spawn-soul-fire-flame-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `soul` particles at the specified position.
+  spawn-soul-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `flash` particles at the specified position.
+  spawn-flash-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: flash);
+  resource flash {
+    constructor(color: s32);
+  }
+  /// Spawns `happy_villager` particles at the specified position.
+  spawn-happy-villager-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `composter` particles at the specified position.
+  spawn-composter-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `heart` particles at the specified position.
+  spawn-heart-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `instant_effect` particles at the specified position.
+  spawn-instant-effect-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: instant-effect);
+  resource instant-effect {
+    constructor(color: s32, power: f32);
+  }
+  /// Spawns `item` particles at the specified position.
+  spawn-item-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: item);
+  resource item {
+    constructor(item: s16);
+  }
+  /// Spawns `vibration` particles at the specified position.
+  spawn-vibration-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `trail` particles at the specified position.
+  spawn-trail-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: trail);
+  resource trail {
+    constructor(target: position, color: s32, duration: s32);
+  }
+  /// Spawns `pause_mob_growth` particles at the specified position.
+  spawn-pause-mob-growth-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `reset_mob_growth` particles at the specified position.
+  spawn-reset-mob-growth-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `item_slime` particles at the specified position.
+  spawn-item-slime-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `item_cobweb` particles at the specified position.
+  spawn-item-cobweb-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `item_snowball` particles at the specified position.
+  spawn-item-snowball-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `large_smoke` particles at the specified position.
+  spawn-large-smoke-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `lava` particles at the specified position.
+  spawn-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `mycelium` particles at the specified position.
+  spawn-mycelium-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `note` particles at the specified position.
+  spawn-note-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `poof` particles at the specified position.
+  spawn-poof-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `portal` particles at the specified position.
+  spawn-portal-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `rain` particles at the specified position.
+  spawn-rain-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `smoke` particles at the specified position.
+  spawn-smoke-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `white_smoke` particles at the specified position.
+  spawn-white-smoke-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `sneeze` particles at the specified position.
+  spawn-sneeze-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `spit` particles at the specified position.
+  spawn-spit-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `squid_ink` particles at the specified position.
+  spawn-squid-ink-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `sweep_attack` particles at the specified position.
+  spawn-sweep-attack-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `totem_of_undying` particles at the specified position.
+  spawn-totem-of-undying-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `underwater` particles at the specified position.
+  spawn-underwater-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `splash` particles at the specified position.
+  spawn-splash-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `witch` particles at the specified position.
+  spawn-witch-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `bubble_pop` particles at the specified position.
+  spawn-bubble-pop-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `current_down` particles at the specified position.
+  spawn-current-down-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `bubble_column_up` particles at the specified position.
+  spawn-bubble-column-up-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `nautilus` particles at the specified position.
+  spawn-nautilus-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dolphin` particles at the specified position.
+  spawn-dolphin-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `campfire_cosy_smoke` particles at the specified position.
+  spawn-campfire-cosy-smoke-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `campfire_signal_smoke` particles at the specified position.
+  spawn-campfire-signal-smoke-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dripping_honey` particles at the specified position.
+  spawn-dripping-honey-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_honey` particles at the specified position.
+  spawn-falling-honey-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `landing_honey` particles at the specified position.
+  spawn-landing-honey-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_nectar` particles at the specified position.
+  spawn-falling-nectar-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_spore_blossom` particles at the specified position.
+  spawn-falling-spore-blossom-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `ash` particles at the specified position.
+  spawn-ash-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `crimson_spore` particles at the specified position.
+  spawn-crimson-spore-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `warped_spore` particles at the specified position.
+  spawn-warped-spore-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `spore_blossom_air` particles at the specified position.
+  spawn-spore-blossom-air-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dripping_obsidian_tear` particles at the specified position.
+  spawn-dripping-obsidian-tear-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_obsidian_tear` particles at the specified position.
+  spawn-falling-obsidian-tear-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `landing_obsidian_tear` particles at the specified position.
+  spawn-landing-obsidian-tear-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `reverse_portal` particles at the specified position.
+  spawn-reverse-portal-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `white_ash` particles at the specified position.
+  spawn-white-ash-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `small_flame` particles at the specified position.
+  spawn-small-flame-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `snowflake` particles at the specified position.
+  spawn-snowflake-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dripping_dripstone_lava` particles at the specified position.
+  spawn-dripping-dripstone-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_dripstone_lava` particles at the specified position.
+  spawn-falling-dripstone-lava-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dripping_dripstone_water` particles at the specified position.
+  spawn-dripping-dripstone-water-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `falling_dripstone_water` particles at the specified position.
+  spawn-falling-dripstone-water-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `glow_squid_ink` particles at the specified position.
+  spawn-glow-squid-ink-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `glow` particles at the specified position.
+  spawn-glow-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `wax_on` particles at the specified position.
+  spawn-wax-on-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `wax_off` particles at the specified position.
+  spawn-wax-off-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `electric_spark` particles at the specified position.
+  spawn-electric-spark-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `scrape` particles at the specified position.
+  spawn-scrape-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `shriek` particles at the specified position.
+  spawn-shriek-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: shriek);
+  resource shriek {
+    constructor(delay: s32);
+  }
+  /// Spawns `egg_crack` particles at the specified position.
+  spawn-egg-crack-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dust_plume` particles at the specified position.
+  spawn-dust-plume-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `trial_spawner_detection` particles at the specified position.
+  spawn-trial-spawner-detection-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `trial_spawner_detection_ominous` particles at the specified position.
+  spawn-trial-spawner-detection-ominous-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `vault_connection` particles at the specified position.
+  spawn-vault-connection-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `dust_pillar` particles at the specified position.
+  spawn-dust-pillar-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: dust-pillar);
+  resource dust-pillar {
+    constructor(state: s32);
+  }
+  /// Spawns `ominous_spawning` particles at the specified position.
+  spawn-ominous-spawning-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `raid_omen` particles at the specified position.
+  spawn-raid-omen-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `trial_omen` particles at the specified position.
+  spawn-trial-omen-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
+  /// Spawns `block_crumble` particles at the specified position.
+  spawn-block-crumble-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: block-crumble);
+  resource block-crumble {
+    constructor(state: s32);
+  }
+  /// Spawns `firefly` particles at the specified position.
+  spawn-firefly-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
 }
