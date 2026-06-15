@@ -136,10 +136,7 @@ interface particles {
     constructor(color: s32, power: f32);
   }
   /// Spawns `item` particles at the specified position.
-  spawn-item-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32, particle: item);
-  resource item {
-    constructor(item: s16);
-  }
+  spawn-item-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
   /// Spawns `vibration` particles at the specified position.
   spawn-vibration-particle: func(%world: borrow<%world>, pos: position, offset: offset, max-speed: f32, particle-count: s32);
   /// Spawns `trail` particles at the specified position.
